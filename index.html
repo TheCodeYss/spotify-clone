@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Use UTF-8 so all characters display correctly -->
+    <meta charset="UTF-8">
+
+    <!-- Makes the page scale properly on mobile screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link our own stylesheet (all the design lives in style.css) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Browser tab icon (relative path so it also works on GitHub Pages) -->
+    <link rel="icon" href="./Asset/logo.png">
+
+    <title>Spotify - Web Player: Music for everyone</title>
+
+    <!-- ================= External resources ================= -->
+
+    <!-- Google Fonts: Montserrat (the font used on the whole page) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome: gives us icons like the house, search, heart, etc. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!--
+        PAGE LAYOUT (three parts):
+        1. .sidebar        -> left column (Home, Search, Library)
+        2. .main-content   -> right column (cards, scrolls up and down)
+        3. .music-player   -> fixed bar at the bottom
+        .main is a flex container, so sidebar and main-content sit side by side.
+    -->
+    <div class="main">
+
+        <!-- ================= 1. SIDEBAR ================= -->
+        <div class="sidebar">
+
+            <!-- Top box of the sidebar: Home and Search -->
+            <div class="nav">
+
+                <!-- Home is the active page, so it has full opacity (others are dimmed in CSS) -->
+                <div class="nav-option" style="opacity: 1;">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="#">Home</a>
+                </div>
+                <div class="nav-option">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="#">Search</a>
+                </div>
+
+            </div>
+
+            <!-- Bottom box of the sidebar: Your Library -->
+            <div class="library">
+
+                <!-- Library title on the left, small action icons on the right -->
+                <div class="option">
+
+                    <div class="lib-option nav-option">
+                        <img src="./Asset/library_icon.png" alt="">
+                        <a href="#">Library</a>
+                    </div>
+
+                    <div class="icons">
+                        <!-- The "x" icon rotated 45 degrees so it looks like a "+" (add) -->
+                        <i class="fa-solid fa-xmark" style="transform: rotate(45deg)"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Two grey boxes with call-to-action buttons -->
+                <div class="lib-box">
+                    <div class="box">
+                        <p class="box-p1">Create your first playlist</p>
+                        <p class="box-p2">It's easy, we'll help you</p>
+                        <button class="badge">Create Playlist</button>
+                    </div>
+
+                    <div class="box">
+                        <p class="box-p1">Let's find some podcasts to follow</p>
+                        <p class="box-p2">We'll keep you updated on new episodes</p>
+                        <button class="badge">Browse podcasts</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. MAIN CONTENT ================= -->
+        <div class="main-content">
+
+            <!-- Top bar that stays visible while scrolling (position: sticky in CSS) -->
+            <div class="sticky-nav">
+
+                <!-- Back and forward arrows. "hide" removes the forward arrow on small screens -->
+                <div class="sticky-nav-icons">
+                    <img src="./Asset/backward_icon.png">
+                    <img src="./Asset/forward_icon.png" class="hide">
+                </div>
+
+                <!-- Buttons and profile icon on the right side -->
+                <div class="sticky-nav-options">
+                    <button class="badge nav-items hide">Explore Premium</button>
+                    <button class="badge nav-items dark-badge"><i class="fa-regular fa-circle-down"
+                            style="margin-right:5px;"></i>install App</button>
+                    <i class="fa-regular fa-user nav-items"></i>
+                </div>
+
+            </div>
+
+            <!--
+                Each section below = one heading + one .card-container.
+                Each .card = image + title + small description.
+                To add another card, just copy one .card block and change the image and text.
+            -->
+
+            <!-- Section 1 -->
+            <h2>Recently Played</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="Asset/card1img.jpeg" class="card-img">
+                    <p class="card-title">Top 50 - Global</p>
+                    <p class="card-info">Your daily updates of the most played tracks...</p>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <h2>Trending near you</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="Asset/card2img.jpeg" class="card-img">
+                    <p class="card-title">Indie India</p>
+                    <p class="card-info">Best of the Indie India</p>
+                </div>
+
+                <div class="card">
+                    <img src="Asset/card3img.jpeg" class="card-img">
+                    <p class="card-title">Indie India</p>
+                    <p class="card-info">Best of the Indie India</p>
+                </div>
+
+                <div class="card">
+                    <img src="Asset/card4img.jpeg" class="card-img">
+                    <p class="card-title">Indie India</p>
+                    <p class="card-info">Best of the Indie India</p>
+                </div>
+
+                <div class="card">
+                    <img src="Asset/card3img.jpeg" class="card-img">
+                    <p class="card-title">Indie India</p>
+                    <p class="card-info">Best of the Indie India</p>
+                </div>
+
+                <div class="card">
+                    <img src="Asset/card4img.jpeg" class="card-img">
+                    <p class="card-title">Indie India</p>
+                    <p class="card-info">Best of the Indie India</p>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <h2>Featured Charts</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="Asset/card5img.jpeg" class="card-img">
+                    <p class="card-title">Indie India</p>
+                    <p class="card-info">Best of the Indie India</p>
+                </div>
+
+                <div class="card">
+                    <img src="Asset/card6img.jpeg" class="card-img">
+                    <p class="card-title">Indie India</p>
+                    <p class="card-info">Best of the Indie India</p>
+                </div>
+
+                <div class="card">
+                    <img src="Asset/card1img.jpeg" class="card-img">
+                    <p class="card-title">Indie India</p>
+                    <p class="card-info">Best of the Indie India</p>
+                </div>
+            </div>
+
+            <!-- Empty space and a thin line at the bottom, so the last cards are not hidden behind the player bar -->
+            <div class="footer">
+                <div class="line"></div>
+            </div>
+
+        </div>
+
+        <!-- ================= 3. MUSIC PLAYER (fixed at the bottom) ================= -->
+        <!-- Split into three columns: album info (25%) | player (50%) | controls (25%) -->
+        <div class="music-player">
+
+            <!-- Left: current song cover, name, artist and a like (heart) button -->
+            <div class="album">
+                <img src="./Asset/card1img.jpeg">
+
+                <div class="song-info">
+                    <p class="song-name">Daylight</p>
+                    <p class="artist-name">David Kushner</p>
+                </div>
+
+                <i class="fa-regular fa-heart heart"></i>
+            </div>
+
+            <!-- Center: play controls and the progress bar -->
+            <div class="player">
+
+                <!-- Shuffle, previous, play, next, repeat (the 3rd icon is the big play button) -->
+                <div class="player-controls">
+                    <img src="./Asset/player_icon1.png" class="player-control-icon">
+                    <img src="./Asset/player_icon2.png" class="player-control-icon">
+                    <img src="./Asset/player_icon3.png" class="player-control-icon" style="opacity:1; height:2rem;">
+                    <img src="./Asset/player_icon4.png" class="player-control-icon">
+                    <img src="./Asset/player_icon5.png" class="player-control-icon">
+                </div>
+
+                <!-- Current time | slider | total time -->
+                <div class="playback-bar">
+                    <span class="curr-time">00:00</span>
+
+                    <!-- A range input used as the progress bar (styled in CSS) -->
+                    <input type="range" min="0" max="100" class="progress-bar">
+
+                    <span class="tot-time">3:33</span>
+                </div>
+
+            </div>
+
+            <!-- Right: reserved space for volume controls (to be added later) -->
+            <div class="controls">
+                <!-- Volume icons will come here later -->
+            </div>
+
+        </div>
+
+</body>
+
+</html>

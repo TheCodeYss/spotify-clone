@@ -1,0 +1,369 @@
+/* =====================================================
+   SPOTIFY CLONE - style.css
+   Sections: Base -> Layout -> Sidebar -> Top bar ->
+             Cards -> Music player
+   ===================================================== */
+
+
+/* ================= BASE STYLES ================= */
+
+body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;                  /* remove the default white gap around the page */
+    background-color: black;
+    color: white;
+    overflow: hidden;           /* no page scroll; only .main-content scrolls */
+}
+
+a {
+    text-decoration: none;      /* remove underline from links */
+    color: white;
+}
+
+
+/* ================= MAIN LAYOUT ================= */
+
+/* Flex container: puts sidebar and main-content side by side */
+.main {
+    display: flex;
+    height: 100vh;              /* full screen height */
+    padding: 0.5rem;            /* 8px gap around everything */
+}
+
+.sidebar {
+    background-color: black;
+    width: 340px;
+    border-radius: 1rem;        /* 16px */
+    margin-right: 0.5rem;
+}
+
+/* Right side: takes all remaining width and scrolls on its own */
+.main-content {
+    background-color: #121212;
+    flex: 1;                    /* grow to fill the remaining space */
+    border-radius: 1rem;
+    overflow: auto;             /* scrollbar appears when content is taller than the box */
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+/* Top box: Home and Search */
+.nav {
+    background-color: #121212;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;     /* stack Home above Search */
+    justify-content: center;
+    height: 100px;
+    padding: 0.5rem 0.75rem;    /* 8px 12px */
+}
+
+/* Each nav row is dimmed by default and becomes bright on hover */
+.nav-option {
+    opacity: 0.7;
+    line-height: 2.5rem;
+    padding-left: 1rem;
+}
+
+.nav-option:hover {
+    opacity: 1;
+}
+
+.nav-option i {
+    font-size: 1.25rem;         /* icon size */
+}
+
+.nav-option a {
+    font-size: 1rem;
+    margin-left: 1rem;          /* space between icon and text */
+}
+
+/* Bottom box: Library */
+.library {
+    background-color: #121212;
+    border-radius: 1rem;
+    height: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Library title on the left, small icons on the right */
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lib-option img {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.icons {
+    font-size: 1.15rem;
+    display: flex;
+}
+
+.icons i {
+    opacity: 0.7;
+    margin-right: 1rem;
+}
+
+.icons i:hover {
+    opacity: 1;
+}
+
+/* Grey call-to-action boxes ("Create your first playlist", etc.) */
+.box {
+    background-color: #232323;
+    height: 8rem;
+    border-radius: 0.75rem;
+    margin: 0.75rem 0 1.75rem 0;    /* top right bottom left */
+    padding: 0.75rem 1rem;
+}
+
+.box-p1 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.box-p2 {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Rounded white pill button (also used in the top bar) */
+.badge {
+    height: 2rem;
+    width: fit-content;             /* button is only as wide as its text */
+    margin-top: 0.5rem;
+    background-color: white;
+    border: none;
+    border-radius: 6.3rem;          /* very large radius = pill shape */
+    padding: 0.25rem 1rem;
+    font-weight: 700;
+    color: #121212;
+}
+
+/* Dark version of the badge, used for the "install App" button */
+.dark-badge {
+    background-color: black;
+    color: white;
+}
+
+
+/* ================= TOP BAR (STICKY) ================= */
+
+/* Stays at the top of .main-content while the cards scroll underneath */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: #121212;      /* needed so cards do not show through the bar */
+    display: flex;
+    justify-content: space-between; /* arrows on the left, buttons on the right */
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    z-index: 100;                   /* keeps the bar above the cards */
+}
+
+.sticky-nav-icons {
+    margin-left: 1rem;
+}
+
+.sticky-nav-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-items {
+    margin-right: 1rem;
+}
+
+/* Responsive: on screens 1000px wide or smaller, hide anything with class "hide" */
+@media (max-width: 1000px) {
+    .hide {
+        display: none !important;   /* !important makes sure this rule wins */
+        visibility: hidden;
+    }
+}
+
+
+/* ================= CARDS ================= */
+
+/* One song/playlist card */
+.card {
+    background-color: #232323;
+    width: 150px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Row of cards; flex-wrap moves cards to the next line when there is no space */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-img {
+    border-radius: 0.5rem;
+    width: 100%;                    /* image fills the card width */
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.card-info {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* Empty space at the bottom so the last cards are not hidden by the fixed player */
+.footer {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line {
+    width: 90%;
+    height: 30%;
+    border-top: 1px solid white;
+    opacity: 0.4;
+}
+
+
+/* ================= MUSIC PLAYER (BOTTOM BAR) ================= */
+
+/* Stuck to the bottom of the screen (position: fixed), with 3 columns inside */
+.music-player {
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 72px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Left column: cover + song name + heart */
+.album {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.album img {
+    height: 56px;
+    width: 56px;
+    border-radius: 4px;
+    margin-right: 0.75rem;
+}
+
+/* Song name stacked above the artist name */
+.song-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-name {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.artist-name {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #b3b3b3;                 /* light grey */
+}
+
+.artist-name:hover {
+    text-decoration: underline;
+}
+
+.heart {
+    margin-left: 1rem;
+    cursor: pointer;                /* hand cursor on hover */
+    opacity: 0.7;
+}
+
+.heart:hover {
+    opacity: 1;
+    color: #1DB954;                 /* Spotify green */
+}
+
+/* Center column: controls above, progress bar below */
+.player {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-control-icon {
+    height: 1rem;
+    margin-right: 1.75rem;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.player-control-icon:hover {
+    opacity: 1;
+}
+
+/* Row: current time | slider | total time */
+.playback-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Custom progress bar: we remove the browser's default look (appearance: none)
+   and style the track and thumb ourselves (these ::-webkit rules work in Chrome, Edge, Safari) */
+.progress-bar {
+    width: 70%;
+    appearance: none;
+    background-color: transparent;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+/* The thin line the slider moves along */
+.progress-bar::-webkit-slider-runnable-track {
+    background-color: #ddd;
+    border-radius: 100px;
+    height: 0.2rem;
+}
+
+/* The green round handle you drag */
+.progress-bar::-webkit-slider-thumb {
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    background-color: #1bd760;
+    border-radius: 50%;
+    margin-top: -6px;               /* moves the handle up so it sits centered on the track */
+}
+
+/* Right column: empty for now, volume controls will go here later */
+.controls {
+    width: 25%;
+}
